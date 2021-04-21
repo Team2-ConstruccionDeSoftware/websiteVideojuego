@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego: Las Aventuras de Sofía</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="Header">
+        <h1 id="red">LAS AVENTURAS DE SOFIA: AL RESCATE DEL VALLE ULU'HA</h1>
+        <h1 id="green">LAS AVENTURAS DE SOFIA: AL RESCATE DEL VALLE ULU'HA</h1>
+        <h1 id="purple">LAS AVENTURAS DE SOFIA: AL RESCATE DEL VALLE ULU'HA</h1>
+    </div>
+    <div class="buttons">
+        <button id="level1-btn" class="btn" onclick="login()">Ya he jugado antes</button>
+        <button id="level2-btn" class="btn" onclick="signUp()">Primera vez jugando</button>
+    </div>
+    <img id="neonBackground" src="images/neonBackground.jpg" alt="Neon background">
+    <div id = "description">
+        <h2>Bienvenid@ a nuestro juego!</h2> 
+        <div id="description-paragraph">Aqui puedes practicar los conceptos básicos de las carreras: Ingeniería en tecnologías computaciones y Bioingeniería y procesos químicos mientras juegas en este videojuego tipo platformer.</div>
+    </div>
+
+    <div id="form"></div>
+        <!--<h2>Para jugar por favor contesta lo siguiente</h2>-->
+    <div id="unity"></div>
+</body>
+<script>
+    //Codigo obtenido de stack para solamente permitir que se escoja una checkbox
+    $("input:checkbox").on('click', function() {
+    // in the handler, 'this' refers to the box clicked on
+    var $box = $(this);
+    if ($box.is(":checked")) {
+        // the name of the box is retrieved using the .attr() method
+        // as it is assumed and expected to be immutable
+        var group = "input:checkbox[name='" + $box.attr("name") + "']";
+        // the checked state of the group/box on the other hand will change
+        // and the current value is retrieved using .prop() method
+        $(group).prop("checked", false);
+        $box.prop("checked", true);
+    } else {
+        $box.prop("checked", false);
+    }
+    });
+</script>
+</html>
