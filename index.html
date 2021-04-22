@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego: Las Aventuras de Sofía</title>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      UnityLoader.instantiate("unityContainer", "Build/Build.json");
+    </script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -27,7 +31,7 @@
 
     <div id="form"></div>
         <!--<h2>Para jugar por favor contesta lo siguiente</h2>-->
-    <div id="unity"></div>
+    <div id="unity"><div id="unityContainer" style="width: 1280px; height: 720px; margin: auto"></div></div>
 </body>
 <script>
     //Codigo obtenido de stack para solamente permitir que se escoja una checkbox
