@@ -7,7 +7,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 app.use(cors());
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: true}))
+
+// previous state: app.use(bodyParser.urlencoded({extended: false}))
 
 // post -> create new Player
 app.post('/postPlayerData', (req, res) => {
@@ -15,7 +17,7 @@ app.post('/postPlayerData', (req, res) => {
     const name = req.body.create_name
     const age = req.body.create_age
     const email = req.body.create_email
-    const schoolYear = req.body.create_school_year || 1
+    const schoolYear = req.body.create_school_year || "High School"
     const sex = req.body.create_sex || "masculine"
 
     const connection = mysql.createConnection
@@ -59,7 +61,7 @@ app.put('/updateUser/:id/:email', (req,res) => {
   })
 
   const queryString = "UPDATE userData SET email = ? WHERE userId = ?"
-  connection().query(queryString, [email, id], (err,result) => {
+  connection.query(queryString, [email, id], (err,result) => {
     if (err)
     {
       console.log("Failed to update the information: " + err)
