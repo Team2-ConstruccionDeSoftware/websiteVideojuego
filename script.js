@@ -18,4 +18,5 @@ function showScrollGame(){
     var elmnt = document.getElementById("unity");
     /*elmnt.innerHTML = '<div id="unityContainer" style="width: 1280px; height: 720px; margin: auto"></div>'*/
     elmnt.scrollIntoView();
+    UnityLoader.instantiate("unityContainer", "Build/Build.json");
 }
