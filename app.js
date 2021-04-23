@@ -19,12 +19,12 @@ app.post('/postPlayerData', (req, res) => {
     ({
       // update for a new db user?
       host: 'localhost',
-      user: 'dbUser',
-      password: 'akr26-98hs',
-      database: 'myGameStats'
+      user: 'unity',
+      password: 'abcd4321.',
+      database: 'mygamestats'
     })
 
-    const queryString = "INSERT INTO userData (email, nombre, sexo, edad, añoEscolar) VALUES (?, ?, ?, ?, ?)"
+    const queryString = "INSERT INTO user-data (email, nombre, sexo, edad, anioEscolar) VALUES (?, ?, ?, ?, ?)"
     connection().query(queryString, [email, name, sex, age, schoolYear], (err, results, fields) => {
       if (err)
       {
@@ -37,6 +37,29 @@ app.post('/postPlayerData', (req, res) => {
     })
   connection.end();
 })
+
+app.get('/getGameStats', (req, res) => {
+    console.log("I'm in.")
+    const connection = mysql.createConnection
+    ({
+      host: 'localhost',
+      user: 'firstApiUser',
+      password: 'abcd4321.',
+      database: 'mygamestats'
+    })
+  
+    const queryString = "SELECT * FROM userData"; //Aqui dar where
+    connection.query(queryString, (err, rows, fields) => {
+      if (err)
+      {
+        console.log("Failed to query for userData: " + err);
+      }
+      console.log("I think we fetched succesfuly");
+      // the header is created. res.end() comes implicit.
+      res.json(rows);
+    })
+    connection.end()
+  })
 
 // put -> update Player
 /*app.put('/updateUser/:id/:email', (req,res) => {

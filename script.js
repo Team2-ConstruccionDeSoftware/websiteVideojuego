@@ -14,8 +14,44 @@ function login(){
     let theString = '<div id="form-wrapper"><form class = "theForm" action = "http://localhost:3000/postUser" method="POST"><div class="txt-field" id = "email"><label>Email: </label><input placeholder="email" name = "create_email" class = "the-input"></div></form><input type="submit" value="Mostrar juego" onclick="showScrollGame()"></div></form></div>';
     document.getElementById("form").innerHTML = theString;
 }
-function showScrollGame(){
+async function showStats()
+{
+  // the endpoint requests the info from the server.
+  const response = await fetch('http://localhost:3000/getWomen', {
+    method: 'GET'});
+
+  /* if HTTP-status is 200-299
+  get the response body (the method explained below) */
+  if (response.ok)
+  {
+    // json are the results, but still in JSON format.
+    let json = await response.json();
+    let resultsString = '<table><tr><th>First name</th><th>Last name</th><th>Email</th></tr>';
+  
+    for(let user in json){
+        resultsString += "<tr><td>";
+        resultsString += json[user].userId;
+        resultsString += "</td><td>";
+        resultsString += json[user].firstName;
+        resultsString += "</td><td>";
+        resultsString += json[user].lastName;
+        resultsString += "</td><td>";
+        resultsString += json[user].email;
+        resultsString += "</td></tr>";
+
+    }
+
+    document.getElementById('userinfo').innerHTML = resultsString;
+  }
+  else
+  {
+    alert("HTTP-Error: " + response.status);
+    document.getElementById('userinfo').innerHTML = response.status;
+  }
+}
+/*function showScrollGame(){
     var elmnt = document.getElementById("unity");
     elmnt.innerHTML = '<div id="unityContainer" style="width: 1280px; height: 720px; margin: auto"></div>';
     elmnt.scrollIntoView();
-}
+    UnityLoader.instantiate("unityContainer", "Build/Build.json");
+}*/
