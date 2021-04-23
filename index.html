@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego: Las Aventuras de Sofía</title>
     <script src="Build/UnityLoader.js"></script>
-    <script>
-        UnityLoader.instantiate("unityContainer", "Build/Build.json");
-    </script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -25,15 +22,16 @@
     </div>
     <img id="neonBackground" src="images/neonBackground.jpg" alt="Neon background">
     <div id = "description">
-        <h2>Bienvenid@ a nuestro juego!</h2> 
+        <h2>Bienvenid@ a nuestro juego!</h2>
         <div id="description-paragraph">Aqui puedes practicar los conceptos básicos de las carreras: Ingeniería en tecnologías computaciones y Bioingeniería y procesos químicos mientras juegas en este videojuego tipo platformer.</div>
     </div>
 
     <div id="form"></div>
         <!--<h2>Para jugar por favor contesta lo siguiente</h2>-->
-    <div id="unity"><div id="unityContainer" style="width: 1280px; height: 720px; margin: auto"></div></div>
+    <div id="unity"></div>
 </body>
-<script>
+
+<!--<script>
     //Codigo obtenido de stack para solamente permitir que se escoja una checkbox
     $("input:checkbox").on('click', function() {
     // in the handler, 'this' refers to the box clicked on
@@ -50,5 +48,5 @@
         $box.prop("checked", false);
     }
     });
-</script>
+</script>-->
 </html>

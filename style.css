@@ -79,8 +79,8 @@ body{
     font-size: 0.3s;
     font-size: 1rem;
     outline: none;
-    border: 2px solid #FF0000;  
-    margin-left: 5px; 
+    border: 2px solid #FF0000;
+    margin-left: 5px;
 }
 .btn:hover{
     color: white;
@@ -119,11 +119,11 @@ form .txt-field{
 .txt-field input{
     width: 95%;
 }
-#checkboxes{
+#circles{
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
     'one four'
     'two five'
     'three six';
@@ -142,4 +142,3 @@ form .txt-field{
     position: absolute;
     margin-left: 10%;
 }
-
