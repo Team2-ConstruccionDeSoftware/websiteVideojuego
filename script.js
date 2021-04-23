@@ -17,7 +17,7 @@ function login(){
 async function showStats()
 {
   // the endpoint requests the info from the server.
-  const response = await fetch('http://localhost:3000/getWomen', {
+  const response = await fetch('http://localhost:3000/getGenderStats', {
     method: 'GET'});
 
   /* if HTTP-status is 200-299
@@ -27,21 +27,11 @@ async function showStats()
     // json are the results, but still in JSON format.
     let json = await response.json();
     let resultsString = '<table><tr><th>First name</th><th>Last name</th><th>Email</th></tr>';
-  
-    for(let user in json){
-        resultsString += "<tr><td>";
-        resultsString += json[user].userId;
-        resultsString += "</td><td>";
-        resultsString += json[user].firstName;
-        resultsString += "</td><td>";
-        resultsString += json[user].lastName;
-        resultsString += "</td><td>";
-        resultsString += json[user].email;
-        resultsString += "</td></tr>";
-
-    }
-
-    document.getElementById('userinfo').innerHTML = resultsString;
+    console.log(json);
+    /*for(let stat in json){
+        json[stat].
+    }*/
+    document.getElementById('stats').innerHTML = json;
   }
   else
   {

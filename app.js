@@ -13,13 +13,12 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // post -> create new Player
 app.post('/postPlayerData', (req, res) => {
-    console.log(req)
     const name = req.body.create_name
     const age = req.body.create_age
     const email = req.body.create_email
     const schoolYear = req.body.create_school_year || "High School"
     const sex = req.body.create_sex || "masculine"
-
+    console.log(req.body);
     const connection = mysql.createConnection
     ({
       // update for a new db user?
@@ -29,7 +28,7 @@ app.post('/postPlayerData', (req, res) => {
       database: 'mygamestats'
     })
 
-    const queryString = "INSERT INTO jugador (email, nombre, sexo, edad, gradoEscolar) VALUES (?, ?, ?, ?, ?)"
+    const queryString = "INSERT INTO jugador (email, nombre, genero, edad, gradoEscolar) VALUES (?, ?, ?, ?, ?)"
     connection.query(queryString, [email, name, sex, age, schoolYear], (err, results, fields) => {
       if (err)
       {
@@ -43,17 +42,17 @@ app.post('/postPlayerData', (req, res) => {
   connection.end();
 })
 
-app.get('/getGameStats', (req, res) => {
+app.get('/getGenderStats', (req, res) => {
     console.log("I'm in.")
     const connection = mysql.createConnection
     ({
       host: 'localhost',
-      user: 'firstApiUser',
+      user: 'unity',
       password: 'abcd4321.',
       database: 'mygamestats'
     })
   
-    const queryString = "SELECT * FROM userData"; //Aqui dar where
+    const queryString = "Select genero, (Count(genero)* 100 / (Select Count(*) From jugador)) as Porcentaje From jugador Group By genero"
     connection.query(queryString, (err, rows, fields) => {
       if (err)
       {
@@ -65,7 +64,7 @@ app.get('/getGameStats', (req, res) => {
     })
     connection.end()
   })
-
+/*
 // put -> update Player
 app.put('/updateUser/:id/:email', (req,res) => {
   console.log("entramos")
@@ -99,7 +98,7 @@ app.put('/updateUser/:id/:email', (req,res) => {
   })
   connection.end();
 })
-
+*/
 app.listen(3000, () => {
   console.log('REST API running on port 3000')
 });
