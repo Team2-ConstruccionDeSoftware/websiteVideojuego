@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego: Las Aventuras de Sofía</title>
-    <script src="Build/UnityLoader.js"></script>
+    <!--<script src="Build/UnityLoader.js"></script>-->
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="Header">
         <h1 id="red">LAS AVENTURAS DE SOFIA: AL RESCATE DEL VALLE ULU'HA</h1>
@@ -27,8 +29,46 @@
         <div id="description-paragraph">Aqui puedes practicar los conceptos básicos de las carreras: Ingeniería en tecnologías computaciones y Bioingeniería y procesos químicos mientras juegas en este videojuego tipo platformer.</div>
     </div>
     <div id="form"></div>
-    <div id="stats"></div>
+    <div>
+      <canvas id = "myChart"></canvas>
+    </div>
     <div id="unity"></div>
+
+    <!-- Nice Charts using Chart.js -->
+    <!-- <script>
+    const labels = [
+      'Jan',
+      'Feb',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'Aug',
+      'Sept'
+    ];
+
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'This is my first dataset :)',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 8, 9, 15, 25, 3,17]
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data,
+      options: {}
+    };
+
+    var myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script> -->
 </body>
 
 <!--<script>

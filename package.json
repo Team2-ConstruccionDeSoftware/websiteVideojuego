@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Team2-ConstruccionDeSoftware/websiteVideojuego#readme",
   "dependencies": {
+    "chart.js": "^3.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql": "^2.18.1"

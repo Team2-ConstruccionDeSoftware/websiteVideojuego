@@ -11,24 +11,22 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // previous state: app.use(bodyParser.urlencoded({extended: false}))
 
-// post -> create new Player
+/* post -> create new Player */
 app.post('/postPlayerData', (req, res) => {
     const name = req.body.create_name
     const age = req.body.create_age
     const email = req.body.create_email
-    const schoolYear = req.body.create_school_year || "High School"
-    const sex = req.body.create_sex || "masculine"
-    console.log(req.body);
+    const schoolYear = req.body.create_school_year
+    const sex = req.body.create_sex
     const connection = mysql.createConnection
     ({
-      // update for a new db user?
       host: 'localhost',
-      user: 'unity',
-      password: 'abcd4321.',
+      user: 'dbUser',
+      password: 'akr26-98hs',
       database: 'mygamestats'
     })
 
-    const queryString = "INSERT INTO jugador (email, nombre, genero, edad, gradoEscolar) VALUES (?, ?, ?, ?, ?)"
+    const queryString = "INSERT INTO jugador (email, nombre, sexo, edad, gradoEscolar) VALUES (?, ?, ?, ?, ?)"
     connection.query(queryString, [email, name, sex, age, schoolYear], (err, results, fields) => {
       if (err)
       {
@@ -36,31 +34,30 @@ app.post('/postPlayerData', (req, res) => {
         res.sendStatus(500)
         return
       }
-      console.log("Inserted a new PlayerData with identifier email: ", results.email);
+      console.log("Inserted a new Player to the DB");
+      //console.log("Inserted a new PlayerData with identifier email: ", results.email);
       res.end()
     })
   connection.end();
 })
 
 app.get('/getGenderStats', (req, res) => {
-    console.log("I'm in.")
     const connection = mysql.createConnection
     ({
       host: 'localhost',
-      user: 'unity',
-      password: 'abcd4321.',
+      user: 'dbUser',
+      password: 'akr26-98hs',
       database: 'mygamestats'
     })
-  
-    const queryString = "Select genero, (Count(genero)* 100 / (Select Count(*) From jugador)) as Porcentaje From jugador Group By genero"
+
+    const queryString = "Select sexo, (Count(sexo)* 100 / (Select Count(*) From jugador)) as Porcentaje From jugador Group By sexo"
     connection.query(queryString, (err, rows, fields) => {
       if (err)
       {
         console.log("Failed to query for userData: " + err);
       }
       console.log("I think we fetched succesfuly");
-      // the header is created. res.end() comes implicit.
-      res.json(rows);
+      res.json(rows);   // the header is created. res.end() comes implicit.
     })
     connection.end()
   })

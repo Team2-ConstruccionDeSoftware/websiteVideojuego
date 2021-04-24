@@ -142,3 +142,11 @@ form .txt-field{
     position: absolute;
     margin-left: 10%;
 }
+
+#myChart
+{
+  margin-top: 140vh;
+  position: absolute;
+  margin-left: 5%;
+  margin-right: 5%;
+}
