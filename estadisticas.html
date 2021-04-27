@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="statsStyle.css">
+    <script src="estadisticas.js"></script>
+    <title>Estadisticas sobre el juego</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body onload="typeWriter();showGenderStat();">
+    <div id="menuHere"></div>
+    <div id="nav-icon1" onclick="showMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="grid">
+        <div id="area1" class="overlay">
+            <div id="titulo"></div>
+        </div>
+        <div id="area2" class="overlay">
+            <div class="label">Porcentaje de mujeres y hombres resgistrados</div>
+            <canvas id = "genderChart"></canvas>
+        </div>
+        <div id="area3" class="overlay">
+            <div id="bubble" class="label">Bubble diagram</div>
+        </div>
+        <div id="area4" class="overlay"></div>
+        <div id="area5" class="overlay"></div>
+        <div id="area6" class="overlay"></div>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+	$('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+		$(this).toggleClass('open');
+	});
+});
+</script>
+</html>

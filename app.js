@@ -16,12 +16,11 @@ app.post('/postPlayerData', (req, res) => {
     const name = req.body.create_name
     const age = req.body.create_age
     const email = req.body.create_email
-    const schoolYear = req.body.create_school_year || "High School"
-    const sex = req.body.create_sex || "masculine"
-    console.log(req.body);
+    const schoolYear = req.body.create_school_year
+    const sex = req.body.create_sex
+
     const connection = mysql.createConnection
     ({
-      // update for a new db user?
       host: 'localhost',
       user: 'unity',
       password: 'abcd4321.',
@@ -52,7 +51,7 @@ app.get('/getGenderStats', (req, res) => {
       database: 'mygamestats'
     })
   
-    const queryString = "Select genero, (Count(genero)* 100 / (Select Count(*) From jugador)) as Porcentaje From jugador Group By genero"
+    const queryString = "Select genero, count(genero) as numeroPersonas from jugador Group By genero"
     connection.query(queryString, (err, rows, fields) => {
       if (err)
       {
@@ -64,6 +63,65 @@ app.get('/getGenderStats', (req, res) => {
     })
     connection.end()
   })
+
+  //Get player id on url to use it un unity post form
+  app.get('/getPlayerId/:email', (req, res) => {
+    console.log("I'm in.")
+    let playerId = req.params.email;
+    console.log(playerId);
+    //"SELECT nombre FROM jugador where email = ?
+    getConnection().query("SELECT * FROM jugador where email = ?",
+     [playerId],
+     (err,result) => {
+      if (err)
+      {
+        console.log("Failed to query for userData: " + err);
+        res.sendStatus(500)
+        return
+      }else{
+          res.json(result);
+      }
+      });
+  })
+
+  function getConnection(){
+      return mysql.createConnection({
+        host: 'localhost',
+        user: 'unity',
+        password: 'abcd4321.',
+        database: 'mygamestats'
+      })
+  }
+
+  //Unity
+
+function connectToDB()
+{
+    // Change the data to match your configuration.
+    try{
+        return mysql.createConnection({host:'localhost', user:'unity', password:'abcd4321.', database:'mygamestats'});
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+  app.post('/gamedata', (req, res)=>{
+    console.log("I'm in from Unity.")
+    console.log(req.body);
+    getConnection().query("INSERT INTO preguntasrespondidas set ?", 
+     [req.body],
+     (err,result) => {
+      if (err)
+      {
+        console.log("Failed to query for preguntasrespondidas: " + err);
+        res.sendStatus(500)
+        return
+      }else{
+          res.send(result);
+      }
+      });
+});
 /*
 // put -> update Player
 app.put('/updateUser/:id/:email', (req,res) => {
@@ -99,6 +157,6 @@ app.put('/updateUser/:id/:email', (req,res) => {
   connection.end();
 })
 */
-app.listen(3000, () => {
-  console.log('REST API running on port 3000')
+app.listen(5000, () => {
+  console.log('REST API running on port 5000')
 });
