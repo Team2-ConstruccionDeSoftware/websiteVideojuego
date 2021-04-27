@@ -39,9 +39,8 @@ async function showStats()
     console.log(sexMasc);
 
     let howManyWomen = json[0].Porcentaje;
-    console.log(howManyWomen);
     let howManyMen = json[1].Porcentaje;
-    console.log(howManyMen);
+
     let colorA = '#ff6384';
     let colorB = '#8463ff';
 
@@ -53,7 +52,6 @@ async function showStats()
         {
           label: 'Dataset 1',
           data: [howManyWomen, howManyMen],
-          //backgroundColor: Object.values(Utils.CHART_COLORS),
           backgroundColor: [colorA, colorB]
         }
       ]
@@ -65,18 +63,24 @@ async function showStats()
       data: data,
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
-            position: 'top',
+            position: 'top'
           },
           title: {
             display: true,
-            text: 'Pie Chart: cantidad de jugadores mujeres vs hombres'
+            text: 'Pie Chart: Porcentaje de jugadores mujeres vs hombres',
+            font: {
+              size: 25
+            }
           }
         }
       },
     };
 
+    // make the default font size = 20
+    Chart.defaults.font.size = 25;
     /* show graph in HTML page */
     var myChart = new Chart(
       document.getElementById('myChart'),
