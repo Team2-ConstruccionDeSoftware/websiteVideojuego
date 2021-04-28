@@ -35,67 +35,75 @@ app.post('/postPlayerData', (req, res) => {
         return
       }
       console.log("Inserted a new Player to the DB");
-      //console.log("Inserted a new PlayerData with identifier email: ", results.email);
       res.end()
     })
   connection.end();
 })
 
 app.get('/getGenderStats', (req, res) => {
-    const connection = mysql.createConnection
-    ({
-      host: 'localhost',
-      user: 'dbUser',
-      password: 'akr26-98hs',
-      database: 'mygamestats'
-    })
-
-    const queryString = "Select sexo, (Count(sexo)* 100 / (Select Count(*) From jugador)) as Porcentaje From jugador Group By sexo"
-    connection.query(queryString, (err, rows, fields) => {
-      if (err)
-      {
-        console.log("Failed to query for userData: " + err);
-      }
-      console.log("I think we fetched succesfuly");
-      res.json(rows);   // the header is created. res.end() comes implicit.
-    })
-    connection.end()
-  })
-/*
-// put -> update Player
-app.put('/updateUser/:id/:email', (req,res) => {
-  console.log("entramos")
-  let id = req.params.id
-  let email = req.params.email
-  console.log(id)
-  console.log(email)
-
   const connection = mysql.createConnection
   ({
-    // update for a new db user?
     host: 'localhost',
     user: 'dbUser',
     password: 'akr26-98hs',
-    database: 'myGameStats'
+    database: 'mygamestats'
   })
 
-  const queryString = "UPDATE userData SET email = ? WHERE userId = ?"
-  connection.query(queryString, [email, id], (err,result) => {
+  const queryString = "Select sexo, (Count(sexo)* 100 / (Select Count(*) From jugador)) as Porcentaje From jugador Group By sexo"
+  connection.query(queryString, (err, rows, fields) => {
     if (err)
     {
-      console.log("Failed to update the information: " + err)
-      res.sendStatus(500)
-      return
+      console.log("Failed to query: " + err);
     }
-    else
-    {
-      console.log("Update successful")
-      res.send(result);
-    }
+    console.log("I think we fetched succesfuly");
+    res.json(rows);   // the header is created. res.end() comes implicit.
   })
-  connection.end();
+  connection.end()
 })
-*/
+
+app.get('/getLevelDiff', (req, res) => {
+  const connection = mysql.createConnection
+  ({
+    host: 'localhost',
+    user: 'dbUser',
+    password: 'akr26-98hs',
+    database: 'mygamestats'
+  })
+  /* Didi DB query 'Select nivel.nombre, (count(idPreguntaPR)*100/(select count(idPreguntaPR) from preguntasrespondidas)) as "Porcentaje de aciertos" From((preguntasrespondidasinner join pregunta on pregunta.idPregunta = preguntasrespondidas.idPreguntaPR) inner join nivel on pregunta.nivelPregunta = nivel.idNivel) where contestoBien = 1 Group By nivel.nombre;' */
+
+  const queryString = 'Select nivel.nombreNivel, (count(idPreguntaPR)*100/(select count(idPreguntaPR) from preguntasRespondidas)) as "PorcentajeAciertos" From((preguntasRespondidas inner join preguntas on preguntas.idPregunta = preguntasRespondidas.idPreguntaPR) inner join nivel on preguntas.nivelPregunta = nivel.idNivel) where contestoBien = 1 Group By nivel.nombreNivel;'
+  connection.query(queryString, (err, rows, fields) => {
+    if (err)
+    {
+      console.log("Failed to query: " + err);
+    }
+    console.log("I think we fetched succesfuly");
+    res.json(rows);
+  })
+  connection.end()
+})
+
+app.get('/getSchoolYear', (req, res) => {
+  const connection = mysql.createConnection
+  ({
+    host: 'localhost',
+    user: 'dbUser',
+    password: 'akr26-98hs',
+    database: 'mygamestats'
+  })
+
+  const queryString = 'select jugador.gradoEscolar, count(email) as "numJugadores" from jugador group by gradoEscolar;'
+  connection.query(queryString, (err, rows, fields) => {
+    if (err)
+    {
+      console.log("Failed to query: " + err);
+    }
+    console.log("I think we fetched succesfuly");
+    res.json(rows);
+  })
+  connection.end()
+})
+
 app.listen(3000, () => {
   console.log('REST API running on port 3000')
 });

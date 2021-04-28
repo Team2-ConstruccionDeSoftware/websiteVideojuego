@@ -29,14 +29,13 @@ async function showStats()
   {
     /* json are the results, but still in JSON format */
     let json = await response.json();
-    //let resultsString = '<table><tr><th>First name</th><th>Last name</th><th>Email</th></tr>';
-    console.log(json);
+    //console.log(json);
 
     /* Access json's data */
     let sexFem = json[0].sexo;
-    console.log(sexFem);
+    //console.log(sexFem);
     let sexMasc = json[1].sexo;
-    console.log(sexMasc);
+    //console.log(sexMasc);
 
     let howManyWomen = json[0].Porcentaje;
     let howManyMen = json[1].Porcentaje;
@@ -95,7 +94,191 @@ async function showStats()
   }
 }
 
+async function showDifficulty()
+{
+  const response = await fetch('http://localhost:3000/getLevelDiff', {
+    method: 'GET'});
 
+  if (response.ok)
+  {
+    /* json are the results, but still in JSON format */
+    let json = await response.json();
+    //console.log(json);
+
+    // access json's data
+    let levelNameA = json[0].nombreNivel;
+    //console.log(levelNameA);
+    let difficultyA = Math.floor(json[0].PorcentajeAciertos);
+    //console.log(difficultyA);
+
+    let colorA = '#ff6384';
+    let colorB = '#6116F5';
+
+    // Chart setup
+    const DATA_COUNT = 2;       // for now only level 1
+    const labels = [levelNameA, 'nivel 2', 'nivel 3'];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Dificultad del Nivel',
+          data: [difficultyA, 30, 50],
+          borderColor: [colorB, colorA, colorB],
+          backgroundColor: [colorA, colorB, colorA],
+        },
+      ],
+    };
+
+    // Chart configuration
+    const config = {
+      type: 'bar',
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            type: 'linear',
+            grace: '25%'
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Bar Chart: Porcentaje de Dificultad de cada nivel del juego',
+            font: {
+              size: 20
+            }
+          }
+        }
+      },
+    };
+
+    /* show graph in HTML page */
+    Chart.defaults.font.size = 20;
+    var myChart = new Chart(
+      document.getElementById('myBarChart'),
+      config
+    );
+  }
+
+  else
+  {
+    alert("HTTP-Error: " + response.status);
+    document.getElementById('userinfo').innerHTML = response.status;
+  }
+}
+
+async function showSchoolYear()
+{
+  const response = await fetch('http://localhost:3000/getSchoolYear', {
+    method: 'GET'});
+
+  if (response.ok)
+  {
+    /* json are the results, but still in JSON format */
+    let json = await response.json();
+    //console.log(json);
+
+    // access json's data
+    let prep1 = json[3].gradoEscolar;
+    let jugadoresPrep1 = json[3].numJugadores;
+    //console.log(jugadoresPrep1);
+
+    let secu1 = json[2].gradoEscolar;
+    let jugadoresSecu1 = json[2].numJugadores;
+    //console.log(jugadoresSecu1);
+
+    let secu2 = json[1].gradoEscolar;
+    let jugadoresSecu2 = json[1].numJugadores;
+    //console.log(jugadoresSecu2);
+
+    let secu3 = json[0].gradoEscolar;
+    let jugadoresSecu3 = json[0].numJugadores;
+    //console.log(jugadoresSecu3);
+
+    let colorA = '#18E3E0';
+    let colorB = '#E3187A';
+    let colorC = '#FFC300';
+    let colorD = '#9776E5';
+
+    // Chart Setup
+    const DATA_COUNT = 1;
+    const data = {
+      datasets: [
+        {
+          // cuando haya mas de 20 jugadores para cada categoria, remplzar
+          label: prep1,
+          data: [{x: jugadoresPrep1, y: 2, r: 20}],
+          borderColor: colorA,
+          backgroundColor: colorA,
+        },
+        {
+          label: secu3,
+          data: [{x: jugadoresSecu3, y: -2, r: 20}],
+          borderColor: colorB,
+          backgroundColor: colorB,
+        },
+        {
+          label: secu2,
+          data: [{x: jugadoresSecu2, y: 3, r: 20}],
+          borderColor: colorC,
+          backgroundColor: colorC,
+        },
+        {
+          label: secu1,
+          data: [{x: jugadoresSecu1, y: -3, r: 20}],
+          borderColor: colorD,
+          backgroundColor: colorD,
+        }
+      ]
+    };
+
+    // Chart configuration
+    const config = {
+      type: 'bubble',
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            type: 'linear',
+            grace: '5'
+          },
+          y: {
+            type: 'linear',
+            grace: '5'
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Bubble Chart: Cantidad de jugadores de acuerdo a su año escolar'
+          }
+        }
+      },
+    };
+
+    Chart.defaults.font.size = 20;
+    var myChart = new Chart(
+      document.getElementById('myBubbleChart'),
+      config
+    );
+  }
+
+  else
+  {
+    alert("HTTP-Error: " + response.status);
+    document.getElementById('userinfo').innerHTML = response.status;
+  }
+}
 /*function showScrollGame(){
     var elmnt = document.getElementById("unity");
     elmnt.innerHTML = '<div id="unityContainer" style="width: 1280px; height: 720px; margin: auto"></div>';

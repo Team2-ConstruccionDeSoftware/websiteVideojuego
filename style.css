@@ -145,7 +145,23 @@ form .txt-field{
 
 #myChart
 {
-  margin-top: 140vh;
+  margin-top: 150vh;
+  position: absolute;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#myBarChart
+{
+  margin-top: 290vh;
+  position: absolute;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#myBubbleChart
+{
+  margin-top: 430vh;
   position: absolute;
   margin-left: 5%;
   margin-right: 5%;
