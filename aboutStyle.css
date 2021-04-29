@@ -1,5 +1,40 @@
 
-
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn+SC&display=swap');
+body{
+  margin: 0px;
+  background-color: #1f1f1f;
+}
+.background
+{
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#sobre-juego-background
+{
+  background-image: url("images/sobreJuego.jpg");
+  height: 50vh;
+}
+#nivelesImg
+{
+  background-image: url("images/level.jpeg");
+  height: 50vh;
+}
+.heading-body
+{
+  background-color: #cfb9ff;
+  color:#dcff79;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Abril Fatface', cursive;
+  font-size: x-large;
+  padding: 20px;
+}
+.aboutDesc{
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+}
   /* CodePen Home
     Menu "Hamburger" Icon Animations
     Jesse Couch. Recuperado de: https://codepen.io/designcouch/pen/Atyop */
@@ -71,3 +106,79 @@
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
+
+#menu{
+  height: 27vh;
+  position: absolute;
+  top: 15%;
+  left: 70%;
+  width: 15%;
+  padding: 3%;
+  padding-bottom: 5%;
+  background-color: #221f1f;
+  border-radius: 6px;
+  border: 3px solid #03DAC5;
+}
+#jueguito{
+  background-image: url("images/primerBackground1.jpg");
+  height: 600px;
+}
+#tutorial{
+  margin: auto;
+  margin-left: 25%;
+}
+.circleMenu{
+  background-color: rgb(114, 110, 110);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.menuIcon{
+  width: 35px;
+  height: 35px;
+  margin-top: 7px;
+  margin-left: 7px;
+  align-self: center;
+}
+.link{
+  width: 100%;
+  border-radius: 6px;
+  color: white;
+  background-color: #221f1f;
+  display: flex;
+  text-decoration: none;
+  border-bottom: 0.5px solid transparent; 
+  text-align: center;
+}
+.link a{
+  color: white;
+  text-decoration: none;
+}
+.menuLabel{
+  font-family: 'Marcellus', serif;
+  font-size: 16px;
+  margin-top: 5%;
+  text-align: center;
+  margin-left: 5%;
+}
+.link:hover{
+  border: 2px solid #03DAC5;
+  background-color: #03dac569;
+}
+.lvls{
+  display: flex;
+}
+.indvLvl{
+  margin: 7px;
+  padding: 20px;
+  border-radius: 7px;
+}
+#lvl1{ border: 2px solid #a65ca6; margin-left: 28px;}
+#lvl2{ border: 2px solid #a65ca6;}
+#lvl3{  border: 2px solid #a65ca6;}
+
+#lvl1:hover{ background-color: #a65ca665;}
+#lvl2:hover{ background-color: #a65ca665;}
+#lvl3:hover{ background-color: #a65ca665;}

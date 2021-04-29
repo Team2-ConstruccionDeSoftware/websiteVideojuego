@@ -22,11 +22,6 @@
         <h1 id="green">LAS AVENTURAS DE SOFIA: AL RESCATE DEL VALLE ULU'HA</h1>
         <h1 id="purple">LAS AVENTURAS DE SOFIA: AL RESCATE DEL VALLE ULU'HA</h1>
     </div>
-    <div class="buttons">
-        <button id="level1-btn" class="btn" onclick="login();">Ya he jugado antes</button>
-        <button id="level2-btn" class="btn" onclick="signUp()">Primera vez jugando</button>
-        <button id="genderStats" class="btn" onclick="showStats()">Estadisticas del juego</button>
-    </div>
     <div id="Bienvenida"></div>
     <div id="neonBackground">
         <div id = "description">
@@ -34,13 +29,18 @@
             <div id="description-paragraph">Aqui puedes practicar los conceptos básicos de las carreras: Ingeniería en tecnologías computaciones y Bioingeniería y procesos químicos mientras juegas en este videojuego tipo platformer.</div>
         </div>
     </div>
-    <div id="form"></div>
-    <div>
-        <canvas id = "myChart"></canvas>
+    <div class="buttons">
+        <button id="level1-btn" class="btn" onclick="login();">Ya he jugado antes</button>
+        <button id="level2-btn" class="btn" onclick="signUp();">Primera vez jugando</button>
     </div>
+    <div id="form"></div>
     <div id="unity"></div>
 </body>
-/div>
-    <div id="unity"></div>
-</body>
+<script>
+    $(document).ready(function(){
+	$('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+		$(this).toggleClass('open');
+	});
+});
+</script>
 </html>

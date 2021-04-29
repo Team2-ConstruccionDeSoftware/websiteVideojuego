@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body onload="typeWriter();showGenderStat();">
+<body onload="typeWriter();showGenderStat();showDifficulty();showSchoolYear();"> <!--countPeople();-->
     <div id="menuHere"></div>
     <div id="nav-icon1" onclick="showMenu()">
         <span></span>
@@ -26,11 +26,18 @@
             <canvas id = "genderChart"></canvas>
         </div>
         <div id="area3" class="overlay">
-            <div id="bubble" class="label">Bubble diagram</div>
+            <div id="bubble" class="label">Cantidad de jugadores de acuerdo a su año escolar</div>
+            <canvas id = "myBubbleChart"></canvas>
         </div>
-        <div id="area4" class="overlay"></div>
+        <div id="area4" class="overlay">
+            <div id="bubble" class="label">Cantidad de personas registradas</div>
+            <div id="countPeople"></div>
+        </div>
         <div id="area5" class="overlay"></div>
-        <div id="area6" class="overlay"></div>
+        <div id="area6" class="overlay">
+            <div id="bubble" class="label">Porcentaje de aciertos por nivel</div>
+            <canvas id = "myBarChart"></canvas>
+        </div>
     </div>
 </body>
 <script>

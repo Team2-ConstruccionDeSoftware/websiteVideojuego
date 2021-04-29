@@ -38,32 +38,29 @@ body{
     margin-left: 10%;
     margin-right: 10%;
 }
-
-#description{
-    margin-top: 30vh;
-    margin-left: 20%;
-    margin-right: 20%;
-    justify-content: center;
-    text-align: center;
-}
 #neonBackground{
-    height: 30vh;
+    height: 40vh;
     background-image: url('images/neonBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
+    width: 70%;
+    padding: 20px;
 }
 #description-paragraph{
     font-size: 20px;
     color: white;
     font-family:'Times New Roman', Times, serif;
     margin-top: 0px;
+    text-align: center;
+}
+#description{
+    text-align: center;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
 }
 .buttons{
-    /*margin-top: 80vh;
-    position: absolute;
-    margin-left: 5%;*/
     display: flex;
 }
 .btn{
@@ -87,10 +84,11 @@ body{
     box-shadow: inset 150px 0 0 0 #EE1D52;
 }
 #unity{
-    position: absolute;
-    margin-top: 35vh;
-    height: 100vh;
-    background-color: powderblue;
+    width: 1280px;
+    height: 1000px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 h2{
@@ -105,12 +103,10 @@ h2{
     color: white;
     font-family: 'Barlow', sans-serif;
     border-radius: 4px;
-    position: absolute;
     background-image: linear-gradient(to right, #8047f1 , #69C9D0);
     padding: 20px;
     width: 25%;
-    margin-left: 37%;
-    margin-top: 80vh;
+    margin: auto;
 }
 form .txt-field{
     margin: 15px 0;
@@ -137,20 +133,13 @@ form .txt-field{
 #segundoprepa{ grid-area: five;}
 #terceroprepa{ grid-area: six;}
 
-#unity{
+/*#unity{
     margin-top: 140vh;
     position: absolute;
     margin-left: 10%;
-}
+}*/
 #Bienvenida{
     color: white;
-}
-#myChart{
-  margin-top: 140vh;
-  position: absolute;
-  margin-left: 5%;
-  margin-right: 5%;
-  height: 10% !important;
 }
 
 /*CSS que agregamos para el menu*/
@@ -187,6 +176,13 @@ form .txt-field{
     color: white;
     background-color: #221f1f;
     display: flex;
+    text-decoration: none;
+    border-bottom: 0.5px solid transparent; 
+    text-align: center;
+}
+.link a{
+    color: white;
+    text-decoration: none;
 }
 .menuLabel{
     font-family: 'Marcellus', serif;

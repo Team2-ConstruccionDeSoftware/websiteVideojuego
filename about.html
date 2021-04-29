@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="aboutStyle.css">
+    <script src="about.js"></script>
     <title>Sobre nuestro juego</title>
 </head>
 <body>
@@ -14,5 +15,51 @@
         <span></span>
         <span></span>
     </div>
+    <div class="heading-body">
+        <div id="tituloTutorial"><h2>¿Cómo jugar?</h2></div>
+    </div>
+    <div class="background" id="jueguito">
+        <video id="tutorial" width="700" height="500" controls>
+            <source src="images/Presentación DIIVMI Games.mp4" type="video/mp4"> 
+        </video>
+        <div id="primeraAbout"></div>
+    </div>
+    <div class="heading-body">
+        <div id="sobre el juego"><h2>Sobre el juego</h2></div>
+        <div id="sobreJuegoDesc" class="aboutDesc">
+            Las Aventuras De Sofia: Al Rescate Del Valle Ulu'Ha, es un platformer en 2D que sigue Sofía, una chica que quiere ser ingeniera y para ello recorrerá diferentes escenarios de Ulu'Ha, cada uno más dificil que el anterior, resolviendo problemas STEM y ampliando así su conociemiento.
+        </div>
+    </div>
+    <div class="background" id="sobre-juego-background">
+        <div id="sobreJuegoImg"></div>
+    </div>
+
+    <div class="heading-body">
+        <div id="mecanicas"><h2>Mecanicas</h2></div>
+        <div class="aboutDesc">
+            Para mostrar las preguntas primero tendrás que eliminar al enemigo volador, a partir de ello se mostrará una pregunta que cambiara dependiendo del
+            escenario. Tendras que saltar sobre el botón que muestre la respuesta correcta para ganar puntos; si pisas una incorrecta perderás puntos y una vida. 
+            Al final tienes que llegar a la medalla para completar el nivel. BUENA SUERTE!!
+        </div>
+    </div>
+    <div class="background" id="sobre-juego-background">
+        <div id="nivelesImg"></div>
+    </div>
+    <div class="heading-body">
+        <h2>Niveles</h2>
+        <div class="lvls">
+            <div id="lvl1" class="aboutDesc" class="indvLvl">En el nivel 1 encontrarás problemas de cálculo y precalculo, es el nivel más facil de todos.</div>
+            <div id="lvl2" class="aboutDesc" class="indvLvl">En el segundo nivel la dificultad escala, encontrarás problemas relacionados con la quimica y la biología. Tendras que responder mientras evitas 
+                los proyectiles del enemigo que te disparará. Este nivel tiene una dificultad intermedia (Tip: Manten presionado el salto para poder subir las plataformas)</div>
+            <div id="lvl3" class="aboutDesc" class="indvLvl">En este ultimo nivel te enfrentarás a problemas de programación. Es el nivel más dificil de todos, así que ten cuidado.</div>
+        </div>
+    </div>
 </body>
+<script>
+    $(document).ready(function(){
+	$('#nav-icon1').click(function(){
+		$(this).toggleClass('open');
+	});
+});
+</script>
 </html>
